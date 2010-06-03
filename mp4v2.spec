@@ -7,6 +7,7 @@ Group:		Libraries
 Source0:	http://mp4v2.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	986701929ef15b03155ac4fb16444797
 URL:		http://code.google.com/p/mp4v2/
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
