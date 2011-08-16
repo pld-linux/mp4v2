@@ -1,7 +1,9 @@
-Summary:	MP4v2 library provides api for creation and modification of MP4 files
+# TODO
+# - drop mp4v2 lib from mpeg4ip
+Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Name:		mp4v2
 Version:	1.9.1
-Release:	0.1
+Release:	1
 License:	MPL v1.1
 Group:		Libraries
 Source0:	http://mp4v2.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -11,7 +13,7 @@ BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The MP4v2 library provides an API to create and modify mp4 files as
+The MP4v2 library provides an API to create and modify MP4 files as
 defined by ISO-IEC:14496-1:2001 MPEG-4 Systems. This file format is
 derived from Apple's QuickTime file format that has been used as a
 multimedia file format in a variety of platforms and applications. It
