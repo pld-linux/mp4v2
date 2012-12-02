@@ -1,15 +1,18 @@
 # TODO
 # - drop mp4v2 lib/progs from mpeg4ip
 Summary:	MP4v2 library provides API for creation and modification of MP4 files
+Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
 Version:	1.9.1
 Release:	2
 License:	MPL v1.1
 Group:		Applications/Multimedia
+#Source0Download: http://code.google.com/p/mp4v2/downloads/list
 Source0:	http://mp4v2.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	986701929ef15b03155ac4fb16444797
 Patch0:		format-security.patch
 URL:		http://code.google.com/p/mp4v2/
+BuildRequires:	help2man
 BuildRequires:	libstdc++-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -19,11 +22,20 @@ The MP4v2 library provides an API to create and modify MP4 files as
 defined by ISO-IEC:14496-1:2001 MPEG-4 Systems. This file format is
 derived from Apple's QuickTime file format that has been used as a
 multimedia file format in a variety of platforms and applications. It
-is a very powerful and extensible format that can accomodate
+is a very powerful and extensible format that can accommodate
 practically any type of media.
 
+%description -l pl.UTF-8
+Biblioteka MP4v2 udostępnia API do tworzenia i modyfikowania plików
+MP4 zgodnych z definicją ISO-IEC:14496-1:2001 MPEG-4 Systems. Ten
+format plików wywodzi się z formatu Apple QuickTime, używanego przez
+wiele platform i aplikacji jako format plików multimedialnych. Jest to
+format mający duże możliwości i rozszerzalny, mogący pomieścić
+praktycznie każdy rodzaj obiektu multimedialnego.
+
 %package libs
-Summary:	Header files for MP4v2
+Summary:	Shared MP4v2 library
+Summary(pl.UTF-8):	Biblioteka współdzielona MP4v2
 Group:		Libraries
 Conflicts:	mp4v2 < 1.9.1-2
 
@@ -31,21 +43,34 @@ Conflicts:	mp4v2 < 1.9.1-2
 The libmp4v2 library provides an abstraction layer for working with
 files using the mp4 container format.
 
+%description libs -l pl.UTF-8
+Biblioteka libmp4v2 zapewnia warstwę abstrakcji do pracy z plikami
+wykorzystującymi format kontenera mp4.
+
 %package devel
-Summary:	Header files for MP4v2
+Summary:	Header files for MP4v2 library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki MP4v2
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	libstdc++-devel
 
 %description devel
-Header files for MP4v2.
+Header files for MP4v2 library.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki MP4v2.
 
 %package static
 Summary:	Static MP4v2 library
+Summary(pl.UTF-8):	Statyczna biblioteka MP4v2
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains static version of MP4v2.
+
+%description static -l pl.UTF-8
+Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 
 %prep
 %setup -q
