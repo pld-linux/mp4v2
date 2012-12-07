@@ -4,12 +4,13 @@ Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
 Version:	2.0.0
-Release:	1
+Release:	2
 License:	MPL v1.1
 Group:		Applications/Multimedia
 #Source0Download: http://code.google.com/p/mp4v2/downloads/list
 Source0:	http://mp4v2.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	c91f06711225b34b4c192c9114887b14
+Patch0:		%{name}-export.patch
 URL:		http://code.google.com/p/mp4v2/
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel
@@ -73,6 +74,7 @@ Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
