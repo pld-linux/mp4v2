@@ -1,5 +1,3 @@
-# TODO
-# - drop mp4v2 lib/progs from mpeg4ip
 Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
