@@ -1,0 +1,128 @@
+Fix @input -> \input macro.
+Remove use of non-existing texi files.
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/Authors.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/Authors.texi	2018-06-13 21:26:45.975228517 +0200
+@@ -1,4 +1,4 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename Authors.info
+ @include base/article.texi
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/BuildRepository.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/BuildRepository.texi	2018-06-13 21:25:43.815229224 +0200
+@@ -1,8 +1,7 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename BuildRepository.info
+ @include base/article.texi
+-@include build/commands.texi
+ @paragraphindent none
+ @c %**end of header
+ 
+@@ -10,7 +9,6 @@
+ @contents
+ 
+ @chapter Overview
+-@include build/overview.texi
+ 
+ @chapter Introduction
+ This document describes the recommended process to build @value{PROJECT.name} from the repository. This process is a @b{superset} of the process to build from a @value{TERM.srcdist} bundle.  If you are interested in building from a @value{TERM.srcdist} bundle then this document is not for you.
+@@ -19,24 +17,14 @@ This document describes the recommended
+ This chapter is for the impatient or those just looking for a quick summary of all the commands used in a typical build. You may skip this summary and jump to @ref{Build Process}.
+ 
+ @example
+-@COMMAND.checkout{}
+-@COMMAND.bootstrap{}
+-@COMMAND.configure{}
+-@COMMAND.build{}
+-@COMMAND.install{}
+-@COMMAND.dist{}
++@command{checkout}
++@command{bootstrap}
++@command{configure}
++@command{build}
++@command{install}
++@command{dist}
+ @end example
+ 
+ @anchor{Build Process}
+ @chapter Build Process
+ 
+-@include build/process.checkout.texi
+-@include build/process.bootstrap.texi
+-@include build/process.configure.texi
+-@include build/process.build.texi
+-@include build/process.install.texi
+-@include build/process.dist.texi
+-@include build/process.doc.texi
+-@include build/process.google.texi
+-
+-@include build/platforms.texi
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/BuildSource.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/BuildSource.texi	2018-06-13 21:26:25.361895416 +0200
+@@ -1,8 +1,7 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename BuildSource.info
+ @include base/article.texi
+-@include build/commands.texi
+ @paragraphindent none
+ @c %**end of header
+ 
+@@ -10,7 +9,6 @@
+ @contents
+ 
+ @chapter Overview
+-@include build/overview.texi
+ 
+ @chapter Introduction
+ This document describes the recommended process to build @value{PROJECT.name} from a @value{TERM.srcdist} bundle. This process is a @b{subset} of the process to build directly from the project's repository. If you are interested in building from the repository then this document is not for you.
+@@ -19,18 +17,12 @@ This document describes the recommended
+ This chapter is for the impatient or those just looking for a quick summary of all the commands used in a typical build. You may skip this summary and jump to @ref{Build Process}.
+ 
+ @example
+-@COMMAND.extract{}
+-@COMMAND.configure{}
+-@COMMAND.build{}
+-@COMMAND.install{}
++@command{extract}
++@command{configure}
++@command{build}
++@command{install}
+ @end example
+ 
+ @anchor{Build Process}
+ @chapter Build Process
+ 
+-@include build/process.extract.texi
+-@include build/process.configure.texi
+-@include build/process.build.texi
+-@include build/process.install.texi
+-
+-@include build/platforms.texi
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/Documentation.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/Documentation.texi	2018-06-13 21:26:36.351895292 +0200
+@@ -1,4 +1,4 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename Documentation.info
+ @include base/article.texi
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/ReleaseNotes.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/ReleaseNotes.texi	2018-06-13 21:21:42.551898646 +0200
+@@ -1,4 +1,4 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename ReleaseNotes.info
+ @include base/article.texi
+--- mp4v2-Release-MP4v2-3.0.3.0/doc/texi/ToolGuide.texi.orig	2017-04-11 17:50:56.000000000 +0200
++++ mp4v2-Release-MP4v2-3.0.3.0/doc/texi/ToolGuide.texi	2018-06-13 21:25:54.481895768 +0200
+@@ -1,4 +1,4 @@
+-@input texinfo @c -*- Texinfo -*-
++\input texinfo @c -*- Texinfo -*-
+ @c %**start of header
+ @setfilename ToolGuide.info
+ @include base/guide.texi

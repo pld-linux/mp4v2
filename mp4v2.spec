@@ -1,17 +1,19 @@
 Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
-Version:	2.0.0
-Release:	3
+Version:	3.0.3.0
+Release:	1
 License:	MPL v1.1
 Group:		Applications/Multimedia
-#Source0Download: http://code.google.com/p/mp4v2/downloads/list
-Source0:	http://mp4v2.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	c91f06711225b34b4c192c9114887b14
+#Source0Download: https://github.com/TechSmith/mp4v2/releases
+Source0:	https://github.com/TechSmith/mp4v2/archive/Release-MP4v2-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	c12fd37e66e64902f24c0677ba577a11
 Patch0:		%{name}-export.patch
-URL:		http://code.google.com/p/mp4v2/
+Patch1:		%{name}-doc.patch
+URL:		https://github.com/TechSmith/mp4v2
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel
+BuildRequires:	texinfo
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -71,12 +73,18 @@ This package contains static version of MP4v2.
 Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 
 %prep
-%setup -q
+%setup -q -n %{name}-Release-MP4v2-%{version}
 %patch0 -p1
+%patch1 -p1
+
+# "txt" build fails without this directory
+mkdir -p doc/articles/txt
 
 %build
 %configure
 %{__make}
+
+%{__make} txt
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -92,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.txt
+%doc CHANGES.logging doc/articles/txt/{Authors,Documentation,ReleaseNotes,ToolGuide}.txt
 %attr(755,root,root) %{_bindir}/mp4track
 %attr(755,root,root) %{_bindir}/mp4extract
 %attr(755,root,root) %{_bindir}/mp4trackdump
