@@ -10,6 +10,7 @@ Source0:	https://github.com/TechSmith/mp4v2/archive/Release-MP4v2-%{version}/%{n
 # Source0-md5:	c12fd37e66e64902f24c0677ba577a11
 Patch0:		%{name}-export.patch
 Patch1:		%{name}-doc.patch
+Patch2:		%{name}-nul.patch
 URL:		https://github.com/TechSmith/mp4v2
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel
@@ -76,6 +77,7 @@ Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 %setup -q -n %{name}-Release-MP4v2-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # "txt" build fails without this directory
 mkdir -p doc/articles/txt
