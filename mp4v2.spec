@@ -2,7 +2,7 @@ Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
 Version:	3.0.4.0
-Release:	1
+Release:	2
 License:	MPL v1.1
 Group:		Applications/Multimedia
 #Source0Download: https://github.com/TechSmith/mp4v2/releases
@@ -11,6 +11,7 @@ Source0:	https://github.com/TechSmith/mp4v2/archive/Release-MP4v2-%{version}/%{n
 Patch0:		%{name}-export.patch
 Patch1:		%{name}-doc.patch
 Patch2:		%{name}-nul.patch
+Patch3:		%{name}-int-overflow.patch
 URL:		https://github.com/TechSmith/mp4v2
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel
@@ -78,6 +79,7 @@ Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # "txt" build fails without this directory
 mkdir -p doc/articles/txt
