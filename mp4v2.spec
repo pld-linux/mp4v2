@@ -76,10 +76,10 @@ Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 
 %prep
 %setup -q -n %{name}-Release-MP4v2-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 # "txt" build fails without this directory
 mkdir -p doc/articles/txt
