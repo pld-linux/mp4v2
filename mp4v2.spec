@@ -2,7 +2,7 @@ Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
 Version:	3.0.4.0
-Release:	2
+Release:	3
 License:	MPL v1.1
 Group:		Applications/Multimedia
 #Source0Download: https://github.com/TechSmith/mp4v2/releases
