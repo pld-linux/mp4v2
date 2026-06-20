@@ -1,16 +1,16 @@
 Summary:	MP4v2 library provides API for creation and modification of MP4 files
 Summary(pl.UTF-8):	Biblioteka MP4v2 - API do tworzenia i modyfikowania plików MP4
 Name:		mp4v2
-Version:	3.0.4.0
-Release:	3
+Version:	5.0.1
+Release:	1
 License:	MPL v1.1
 Group:		Applications/Multimedia
 #Source0Download: https://github.com/TechSmith/mp4v2/releases
-Source0:	https://github.com/TechSmith/mp4v2/archive/Release-MP4v2-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	4055057096e9be03fceaed0170c1b2c0
+Source0:	https://github.com/TechSmith/mp4v2/archive/Release-ThirdParty-MP4v2-%{version}/%{name}-Release-ThirdParty-MP4v2-%{version}.tar.gz
+# Source0-md5:	e56bd6f6016089ee381416162d3b13bb
 Patch0:		%{name}-export.patch
 Patch1:		%{name}-doc.patch
-Patch2:		%{name}-nul.patch
+Patch2:		%{name}-abi.patch
 Patch3:		%{name}-int-overflow.patch
 URL:		https://github.com/TechSmith/mp4v2
 BuildRequires:	help2man
@@ -75,7 +75,7 @@ This package contains static version of MP4v2.
 Ten pakiet zawiera statyczną wersję biblioteki MP4v2.
 
 %prep
-%setup -q -n %{name}-Release-MP4v2-%{version}
+%setup -q -n %{name}-Release-ThirdParty-MP4v2-%{version}
 %patch -P0 -p1
 %patch -P1 -p1
 %patch -P2 -p1
@@ -104,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.logging doc/articles/txt/{Authors,Documentation,ReleaseNotes,ToolGuide}.txt
+%doc CHANGES.logging README.md doc/articles/txt/{Authors,Documentation,ReleaseNotes,ToolGuide}.txt
 %attr(755,root,root) %{_bindir}/mp4track
 %attr(755,root,root) %{_bindir}/mp4extract
 %attr(755,root,root) %{_bindir}/mp4trackdump
@@ -121,15 +121,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmp4v2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmp4v2.so.2
+%{_libdir}/libmp4v2.so.*.*.*
+%ghost %{_libdir}/libmp4v2.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmp4v2.so
+%{_libdir}/libmp4v2.so
 %{_libdir}/libmp4v2.la
 %{_includedir}/mp4v2
 
 %files static
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmp4v2.a
+%{_libdir}/libmp4v2.a

@@ -1,0 +1,50 @@
+Preserve ABI from libmp4v2.so.2 by restoring original MP4Read() and moving changed version to new function name.
+Drop the patch when SONAME changes.
+
+--- mp4v2-Release-ThirdParty-MP4v2-5.0.1/src/mp4.cpp.orig	2021-06-30 20:06:32.000000000 +0200
++++ mp4v2-Release-ThirdParty-MP4v2-5.0.1/src/mp4.cpp	2026-06-20 13:09:09.315522637 +0200
+@@ -87,7 +87,7 @@ const char* MP4GetFilename( MP4FileHandl
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ 
+-MP4FileHandle MP4Read( const char* fileName, ShouldParseAtomCallback cb/*=nullptr*/ )
++MP4FileHandle MP4ReadCb( const char* fileName, ShouldParseAtomCallback cb/*=nullptr*/ )
+ {
+     if (!fileName)
+         return MP4_INVALID_FILE_HANDLE;
+@@ -120,6 +120,11 @@ MP4FileHandle MP4Read( const char* fileN
+     return MP4_INVALID_FILE_HANDLE;
+ }
+ 
++MP4FileHandle MP4Read( const char *fileName)
++{
++    return MP4ReadCb(fileName);
++}
++
+ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* fileProvider )
+ {
+     if (!fileName)
+--- mp4v2-Release-ThirdParty-MP4v2-5.0.1/include/mp4v2/file.h.orig	2026-06-20 13:02:19.201077751 +0200
++++ mp4v2-Release-ThirdParty-MP4v2-5.0.1/include/mp4v2/file.h	2026-06-20 13:03:09.730804007 +0200
+@@ -332,6 +332,10 @@ typedef bool( *ShouldParseAtomCallback )
+ 
+ MP4V2_EXPORT
+ MP4FileHandle MP4Read(
++    const char* fileName );
++
++MP4V2_EXPORT
++MP4FileHandle MP4ReadCb(
+     const char* fileName,
+     ShouldParseAtomCallback cb = nullptr );
+ 
+--- mp4v2-Release-ThirdParty-MP4v2-5.0.1/mp4v2-Win/runner/runner.cpp.orig	2026-06-20 13:03:52.473905781 +0200
++++ mp4v2-Release-ThirdParty-MP4v2-5.0.1/mp4v2-Win/runner/runner.cpp	2026-06-20 13:05:01.080200776 +0200
+@@ -35,7 +35,7 @@ std::vector<MP4TrackId> mp4TrackIdsOfAll
+ int main()
+ {
+    std::string path = "C:\\Users\\d.cheng.TSCCORP\\Desktop\\bugs\\2856 - Crash importing fuzzed MP4\\fuzzed.mp4";
+-   MP4FileHandle fh = MP4Read( path.c_str(), parseAtomCallback );
++   MP4FileHandle fh = MP4ReadCb( path.c_str(), parseAtomCallback );
+ 
+    std::vector<MP4TrackId> videoTrackIds = mp4TrackIdsOfAllVideoTracks( fh );
+    for ( MP4TrackId videoTrackId : videoTrackIds )
